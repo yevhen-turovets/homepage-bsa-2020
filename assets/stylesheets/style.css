@@ -1,0 +1,9 @@
+section.skills:after {
+    content: " ";
+    clear: both;
+    display: block;
+}
+
+.skills .labels > .label {
+    cursor: default;
+}
