@@ -13,6 +13,19 @@
     <link rel="stylesheet" href="./assets/stylesheets/style.css">
   </head>
   <body>
+  <dialog id="childhood">
+    <a href="#resume" title="Hide childhood photos" class="close">Close</a>
+    <div class="photos">
+      <noscript>
+        <img src="./assets/photos/209A0073.JPG" alt="Hi!">
+        <img src="./assets/photos/209A0073.JPG" alt="Hi!">
+        <img src="./assets/photos/209A0073.JPG" alt="Hi!">
+        <img src="./assets/photos/209A0073.JPG" alt="Hi!">
+        <img src="./assets/photos/209A0073.JPG" alt="Hi!">
+        <img src="./assets/photos/209A0073.JPG" alt="Hi!">
+      </noscript>
+    </div>
+  </dialog>
   <main>
     <article>
       <div class="page" style="border-color: midnightblue;">
@@ -23,6 +36,9 @@
               <div class="avatar-wrapper">
                 <object class="avatar" data="./assets/images/avatar.svg" role="img" aria-label="My profile picture"></object>
               </div>
+              <a id="resume" href="#childhood" title="Show childhood photos">
+                <em>Click, if you wont to see other photos</em>
+              </a>
             </div>
             <div class="twelve wide column">
               <div class="stackable grid">
@@ -345,5 +361,31 @@
       </div>
     </article>
   </main>
+  <script>
+		function replaceNoscript(noscript) {
+			var parent = noscript.parentElement;
+			Array.prototype.slice.call((new DOMParser()).parseFromString(noscript.textContent, "text/html").body.children).forEach(function(element) {
+				parent.insertBefore(element, noscript);
+			});
+			parent.removeChild(noscript);
+		}
+		function callFuncOnCollection(collection, func) {
+			Array.prototype.slice.call(collection).map(function (item) {
+				func(item);
+			});
+		}
+		var childhoodPhotos = document.getElementById("childhood").getElementsByClassName("photos")[0];
+		document.getElementById("resume").addEventListener("click", function() {
+			callFuncOnCollection(childhoodPhotos.getElementsByTagName("NOSCRIPT"), replaceNoscript);
+		});
+		if (window.location.hash === "#childhood") {
+			callFuncOnCollection(childhoodPhotos.getElementsByTagName("NOSCRIPT"), replaceNoscript);
+		}
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", function() {
+				navigator.serviceWorker.register('/sw.js');
+			});
+		}
+	</script>
   </body>
 </html>
