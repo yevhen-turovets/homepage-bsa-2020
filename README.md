@@ -15,3 +15,5 @@ In the second release of our project, we implemented many new features:
 
 
 This is beautiful!
+
+🧙Hocus-pocus!
