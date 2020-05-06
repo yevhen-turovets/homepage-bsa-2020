@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./assets/stylesheets/style.css">
   </head>
   <body>
-  <dialog id="photos">
+  <div id="photos">
     <a href="#resume" title="Hide other photos" class="close">Close</a>
     <div class="photos">
       <noscript>
@@ -29,7 +29,7 @@
         <img src="./assets/photos/11-min.JPG" alt="Через степи чёрные и поля зеленые...">
       </noscript>
     </div>
-  </dialog>
+  </div>
   <main>
     <article>
       <div class="page" style="border-color: midnightblue;">
@@ -382,7 +382,7 @@
 		document.getElementById("resume").addEventListener("click", function() {
 			callFuncOnCollection(childhoodPhotos.getElementsByTagName("NOSCRIPT"), replaceNoscript);
 		});
-		if (window.location.hash === "#childhood") {
+		if (window.location.hash === "#photos") {
 			callFuncOnCollection(childhoodPhotos.getElementsByTagName("NOSCRIPT"), replaceNoscript);
 		}
 		if ("serviceWorker" in navigator) {
