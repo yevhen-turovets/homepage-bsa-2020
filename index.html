@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./assets/stylesheets/style.css">
   </head>
   <body>
-  <dialog id="childhood">
-    <a href="#resume" title="Hide childhood photos" class="close">Close</a>
+  <dialog id="photos">
+    <a href="#resume" title="Hide other photos" class="close">Close</a>
     <div class="photos">
       <noscript>
         <img src="./assets/photos/1-min.JPG" alt="It's me">
@@ -40,7 +40,7 @@
               <div class="avatar-wrapper">
                 <object class="avatar" data="./assets/images/avatar.svg" role="img" aria-label="My profile picture"></object>
               </div>
-              <a id="resume" href="#childhood" title="Show childhood photos">
+              <a id="resume" href="#photos" title="Show other photos">
                 <em>Click, if you wont to see other photos</em>
               </a>
             </div>
@@ -378,7 +378,7 @@
 				func(item);
 			});
 		}
-		var childhoodPhotos = document.getElementById("childhood").getElementsByClassName("photos")[0];
+		var childhoodPhotos = document.getElementById("photos").getElementsByClassName("photos")[0];
 		document.getElementById("resume").addEventListener("click", function() {
 			callFuncOnCollection(childhoodPhotos.getElementsByTagName("NOSCRIPT"), replaceNoscript);
 		});
